@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Task extends Model
 {
@@ -18,8 +19,8 @@ class Task extends Model
         'update_at'
     ];
 
-    public function tasks()
+    public function tasks(): BelongsTo
     {
-        return $this->hasMany(Task::class);
+        return $this->belongsTo(User::class);
     }
 }
