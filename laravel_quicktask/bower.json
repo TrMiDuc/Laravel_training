@@ -1,0 +1,21 @@
+{
+  "name": "laravel_quicktask",
+  "description": "",
+  "main": "",
+  "authors": [
+    "TrMiDuc <ductruong9922@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/TrMiDuc/Laravel_training",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bower-example": "TrMiDuc/bower-example#main"
+  }
+}
