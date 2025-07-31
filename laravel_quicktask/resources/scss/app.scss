@@ -1,0 +1,32 @@
+.task-card {
+    background-color: #f8f9fa; // Bootstrap light
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+
+    .task-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+
+    .task-desc {
+        font-size: 0.95rem;
+        color: #495057;
+    }
+
+    .btn {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.875rem;
+        border-radius: 0.2rem;
+        border: 1px solid transparent;
+        &.btn-outline-success {
+            color: #198754;
+            border-color: #198754;
+        }
+        &.btn-outline-danger {
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+    }
+}
