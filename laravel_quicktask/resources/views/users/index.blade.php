@@ -47,7 +47,7 @@
                                             </span>
                                         </td>
                                         <td>{{ $user->tasks->count() }}</td>
-                                        <td class="action-buttons">
+                                        <td class="action-buttons" style="display: block;">
                                             <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-info btn-sm">View</a>
                                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-warning btn-sm">Edit</a>
                                             <form action="{{ route('users.destroy', $user->id) }}" method="POST">

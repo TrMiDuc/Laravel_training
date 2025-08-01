@@ -18,10 +18,16 @@ class Task extends Model
 
     protected $hidden = [
         'user_id',
-        'update_at'
+        'updated_at'
     ];
 
-    public function tasks(): BelongsTo
+    protected $casts = [
+        'due_date' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
