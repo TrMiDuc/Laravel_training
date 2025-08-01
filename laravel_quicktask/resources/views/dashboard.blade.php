@@ -17,7 +17,7 @@
     <div class="py-12">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-6">
-                <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+                <div class=" dark:bg-gray-800 shadow rounded-lg p-6">
                     <p class="text-gray-900 dark:text-gray-100">{{ __("You're logged in!") }}</p>
                 </div>
             </div>
