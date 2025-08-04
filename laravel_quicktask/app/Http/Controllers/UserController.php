@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -69,7 +70,17 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
-        return back();
+        DB::beginTransaction();
+
+        try {
+            $user->tasks()->delete();
+            $user->delete();
+            DB::commit();
+
+            return back()->with('success', 'User and related tasks deleted.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Failed to delete user: ' . $e->getMessage());
+        }
     }
 }
