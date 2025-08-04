@@ -10,7 +10,14 @@
         <div class="card shadow">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Profile: {{ $user->fullname }}</h5>
-                <a href="{{ route('users.index') }}" class="btn btn-secondary btn-sm">← Back to List</a>
+                <div class="d-flex gap-2">
+                    <a href="{{ route('tasks.create', ['user_id' => $user->id]) }}" class="btn btn-success btn-sm">
+                        + Assign Task
+                    </a>
+                    <a href="{{ route('users.index') }}" class="btn btn-secondary btn-sm">
+                        ← Back to List
+                    </a>
+                </div>
             </div>
 
             <div class="card-body">
