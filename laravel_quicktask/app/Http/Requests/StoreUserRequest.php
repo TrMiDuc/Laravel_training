@@ -32,5 +32,11 @@ class StoreUserRequest extends FormRequest
             'password' => 'required|string|min:8|confirmed',
         ];
     }
-
+    
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'phone' => $this->phone ? format_number_with_space($this->phone) : null,
+        ]);
+    }
 }
