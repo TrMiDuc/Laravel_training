@@ -14,8 +14,8 @@
                     <a href="{{ route('tasks.create', ['user_id' => $user->id]) }}" class="btn btn-success btn-sm">
                         + Assign Task
                     </a>
-                    <a href="{{ route('users.index') }}" class="btn btn-secondary btn-sm">
-                        ← Back to List
+                    <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-secondary btn-sm">
+                        Edit
                     </a>
                 </div>
             </div>

@@ -4,7 +4,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TaskController;
-use App\Http\Middleware\CheckSuperAdmin;
 use App\Http\Middleware\Localization;
 
 Route::middleware(Localization::class)->group(function () 
@@ -21,11 +20,15 @@ Route::middleware(Localization::class)->group(function ()
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+        Route::middleware('can:view,user')->get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+        Route::middleware('can:edit,user')->get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::middleware('can:update,user')->put('/users/{user}', [UserController::class, 'update'])->name('users.update');
     });
 
-    Route::middleware(CheckSuperAdmin::class)->group(function () 
+    Route::middleware(['auth', 'can:access-admin'])->group(function () 
     {
-        Route::resource('/users', UserController::class);
+        Route::resource('/users', UserController::class)->except(['update','edit', 'show']);
         Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
         Route::get('/tasks/create', [TaskController::class,'create'])->name('tasks.create');
         Route::get('/tasks/{task}/edit', [TaskController::class,'edit'])->name('tasks.edit');

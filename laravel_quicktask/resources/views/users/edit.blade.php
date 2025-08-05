@@ -10,7 +10,7 @@
         <div class="card shadow">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Edit Profile: {{ $user->fullname }}</h5>
-                <a href="{{ route('users.index') }}" class="btn btn-secondary btn-sm">← Back to List</a>
+                <a href="{{ route('users.show', ['user'=> $user->id]) }}" class="btn btn-secondary btn-sm">← Back to view</a>
             </div>
 
             <form method="POST" action="{{ route('users.update', $user->id) }}">
@@ -54,14 +54,6 @@
                         <div class="col-md-6">
                             <label for="live_at" class="form-label"><strong>Location:</strong></label>
                             <input type="text" id="live_at" name="live_at" class="form-control" value="{{ old('live_at', $user->live_at) }}">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="role" class="form-label"><strong>Role:</strong></label>
-                            <select id="role" name="role" class="form-select" required>
-                                <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>User</option>
-                                <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
-                            </select>
                         </div>
                     </div>
 
